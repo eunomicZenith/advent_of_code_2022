@@ -1,6 +1,6 @@
 with open(r'inputs\day8.txt') as input_file:
     raw_input = input_file.readlines()
-input_woods = [list(line.rstrip('\n')) for line in raw_input]
+input_woods = [line.rstrip('\n') for line in raw_input]
 
 
 def is_visible(tree, list_of_trees):
