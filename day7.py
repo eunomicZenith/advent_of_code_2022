@@ -25,9 +25,9 @@ def folderize(commands_list):
 
 def calc_size(folder):
     folder_sizes = []
-    for key in folder.keys():
-        if type(folder[key]) is dict:
-            child_data = calc_size(folder[key])
+    for value in folder.values():
+        if type(value) is dict:
+            child_data = calc_size(value)
             child_size = child_data[0]
             child_folder_sizes = child_data[1]
             folder_sizes.append(child_size)
