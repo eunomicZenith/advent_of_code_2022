@@ -19,7 +19,6 @@ def viewing_dist(tree, list_of_trees):
     return streak
 
 
-
 def find_best_treehouse(canopy):
     size = len(canopy)
     zipped_canopy = list(zip(*canopy))
