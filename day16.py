@@ -75,11 +75,11 @@ def dfs(valves_list, time=30, memo_cache={}, last_valve=all_valves['AA']):
         # only proceed if there'd be time left
         if new_time > 0:
             # check if we've already computed the pressure we'd gain from this move
-            if (last_valve, next_valve, new_time) in memo_cache:
-                pressure = memo_cache[(last_valve, next_valve, new_time)]
+            if (next_valve, new_time) in memo_cache:
+                pressure = memo_cache[(next_valve, new_time)]
             else:
                 pressure = next_valve.flow * new_time
-                memo_cache[(last_valve, next_valve, new_time)] = pressure
+                memo_cache[(next_valve, new_time)] = pressure
             # make the list of remaining valves, and feed it to dfs recursively
             next_valves = valves_list.copy()
             next_valves.remove(next_valve)
@@ -95,6 +95,7 @@ def split_search(valves_list):
     time = 26
     best_pressure = 0
     attempts = 0
+    cache = {}
     # First we split 1/14, then 2/13, etc. until we reach 7/8. Anything past that is redundant
     for size in range(1, len(valves_list) // 2 + 1):
         for part1 in combinations(valves_set, size):
@@ -102,8 +103,8 @@ def split_search(valves_list):
             part1 = set(part1)
             part2 = valves_set.difference(part1)
             # calculate pressures for each of those
-            part_1_pressure = dfs(list(part1), time)
-            part_2_pressure = dfs(list(part2), time)
+            part_1_pressure = dfs(list(part1), time, cache)
+            part_2_pressure = dfs(list(part2), time, cache)
             tot_pressure = part_1_pressure + part_2_pressure
             # check if their combined pressure beats the record
             best_pressure = max(best_pressure, tot_pressure)
