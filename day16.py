@@ -109,7 +109,7 @@ def split_search(valves_list):
             best_pressure = max(best_pressure, tot_pressure)
             attempts += 1
         print(f'Finished size {size}, best pressure so far: {best_pressure}')
-    print(f'{attempts} ways of diving labor were considered.')
+    print(f'{attempts} ways of dividing labor were considered.')
     return best_pressure
 
 
