@@ -27,12 +27,12 @@ class Valve:
         valves_total = len(valves_dict.values())
         searching_list = [self]
         d = 0
-        while len(distances.keys()) != valves_total:
+        while len(distances) != valves_total:
             d += 1
             next_to_search = []
             for valve_to_search in searching_list:
                 for surrounding_valve in valve_to_search.nearbys:
-                    if surrounding_valve.name not in distances.keys():
+                    if surrounding_valve.name not in distances:
                         distances[surrounding_valve.name] = d
                         next_to_search.append(surrounding_valve)
             searching_list = next_to_search
