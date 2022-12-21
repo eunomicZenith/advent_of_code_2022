@@ -1,5 +1,3 @@
-import time
-
 with open(r'inputs\day17.txt') as input_file:
     jets_input = input_file.read().rstrip('\n')
 
@@ -98,5 +96,5 @@ def tetris_tower(rocks, shifts_str, goal, visualize=False):
 pieces = make_rocks(rocks_input)
 jets = jets_input
 
-print('Part 1: ', tetris_tower(pieces, jets, 2022))
-print('Part 2: ', tetris_tower(pieces, jets, 1_000_000_000_000))
+print('Part 1:', tetris_tower(pieces, jets, 2022))
+print('Part 2:', tetris_tower(pieces, jets, 1_000_000_000_000))
